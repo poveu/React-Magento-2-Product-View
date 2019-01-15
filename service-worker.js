@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/React-Magento-2-Product-View/precache-manifest.5d059b5d7269739576332abae3985575.js"
+  "/React-Magento-2-Product-View/precache-manifest.4e195e5b5961bbbe9d369ea1a492714a.js"
 );
 
 workbox.clientsClaim();
