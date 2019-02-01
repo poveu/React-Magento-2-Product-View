@@ -1,0 +1,335 @@
+a {
+  text-decoration: none;
+  color: initial;
+}
+
+@keyframes placeHolderShimmer {
+  0%{ background-position: -468px 0; }
+  100%{ background-position: 468px 0; }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.error {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  padding: 15px;
+  align-items: center;
+  justify-content: center;
+}
+
+.error p {
+  padding: 15px;
+  margin: 0;
+}
+
+.row, .container {
+  width: 1140px;
+  margin: 0 auto;
+}
+
+.row {
+  padding: 15px;
+  display: flex;
+  line-height: 1;
+}
+
+.col {
+  width: 50%;
+  padding: 15px;
+}
+
+.col div:not(:last-of-type) {
+  margin-bottom: 15px;
+}
+
+.loader {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+  background: url(./images/loader.gif) no-repeat;
+}
+
+.loading .loader-container:before, .loading.loader-container:before {
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: #f5f5f5;
+  border-radius: 3px;
+
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-name: placeHolderShimmer;
+  background: linear-gradient(to right, #f5f5f5 8%, #e8e8e8 18%, #f5f5f5 33%);
+  background-size: 1140px 100px;
+}
+
+.loading .loader-container, .loading.loader-container {
+  background: #f5f5f5;
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+  transition: background 0.5s, width 0.5s, height 0.5s, border-color 0.5s;
+}
+
+.loaded .loader-container, .loaded.loader-container {
+  background: initial;
+}
+
+.loaded .loader-container:not(.loading) > *:not(.loader-container), .loaded.loader-container > * {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.5s, border-color 0.5s, transform 0.5s;
+}
+
+.loading .loader-container:not(.loading) > *:not(.loader-container), .loading.loader-container > * {
+  opacity: 0;
+  transform: translateX(-0.5rem);
+}
+
+.product__name {
+  margin: 0 auto 1em auto;
+}
+
+.product__name h1 {
+  margin: 0;
+}
+
+.loading .product__name {
+  width: 525px;
+  height: 4em;
+}
+
+.product__sku {
+  color: #42669e;
+  min-height: 1.4em;
+  line-height: 1.4em;
+}
+
+.loading .product__sku {
+  width: 50%;
+}
+
+.product__sku span:first-of-type {
+  font-weight: bold;
+}
+
+.product__image {
+  border: 1px solid #e2e2e2;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.product__image img {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+
+.product__image.loading {
+  border-color: #f5f5f5;
+}
+
+.product__image.selected {
+  border-color: #42669e;
+}
+
+.product-image-selected {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 525px;
+  height: 525px;
+  overflow: hidden;
+}
+
+.product-image-selected .product__image {
+  width: 100%;
+  height: 100%;
+}
+
+.fadeIn {
+  opacity: 0;
+  animation: fadeIn 0.5s;
+}
+
+.LazyLoad:not(.is-visible) {
+  opacity: 0;
+}
+
+.LazyLoad.is-visible {
+  animation: fadeIn 0.5s;
+  height: initial !important;
+}
+
+.product-images-thumbnails {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.loading .product-images-thumbnails {
+  height: 100px;
+  width: 75%;
+  margin: 0 auto;
+}
+
+.product-images-thumbnails .product__image {
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+}
+
+.product-images-thumbnails .product__image:not(:last-of-type) {
+  margin-right: 15px;
+}
+
+.loading .product__price {
+  min-height: 2em;
+  width: 25%;
+  line-height: 1.4em;
+}
+
+.product__price span {
+  font-size: 2em;
+}
+
+.loading .productDescription {
+  height: 10em;
+  width: 100%;
+}
+
+.productDescription ul:last-of-type {
+  margin-bottom: 0;
+}
+
+/* MainScreen */
+
+.container {
+  padding: 30px;
+}
+
+.product-list-item {
+  display: flex;
+  margin: 0 -15px;
+  padding: 15px;
+  border: 1px solid white;
+  border-radius: 3px;
+  background: white;
+  transition: box-shadow 0.3s, transform 0.3s, background 0.3s, border 0.3s;
+}
+
+.product-list-item:hover {
+  box-shadow: 0 5px 10px #0000001c;
+  transform: translateY(-5px);
+  border-color: #e2e2e2;
+  background: -moz-linear-gradient(left, rgba(249,249,249,1) 0%, rgba(249,249,249,0) 100%);
+background: -webkit-linear-gradient(left, rgba(249,249,249,1) 0%,rgba(249,249,249,0) 100%);
+background: linear-gradient(to right, rgba(249,249,249,1) 0%,rgba(249,249,249,0) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9f9f9', endColorstr='#00f9f9f9',GradientType=1 );
+}
+
+.product-list-item::first-of-type {
+  margin-top: 0;
+}
+
+.product-list-item::last-of-type {
+  margin-bottom: 0;
+}
+
+.product-list-item__image-container {
+  margin-right: 15px;
+}
+
+.product-list-item__image-container .product__image {
+  width: 150px;
+  height: 150px;
+  background: white;
+}
+
+.product-list-item__info {
+  flex-grow: 1;
+}
+
+.product-list-item__info > div {
+  border-radius: 3px;
+}
+
+.product-list-item__info > div:not(:last-of-type) {
+  margin-bottom: 15px;
+}
+
+.product-list-item__info .product__name {
+  font-size: 1.5em;
+  min-height: 1.4em;
+  font-weight: bold;
+}
+
+.product-list-item.loading .product__name {
+  height: 1em;
+  width: 100%;
+}
+
+.product-list-item.loading .product__sku {
+  width: 30%;
+}
+
+.product-list-item.loading .product__price {
+  width: 15%;
+}
+
+
+@media all and (max-width: 767px) { 
+  .col, .row, .container, .product-image-selected, .loading .product-images-thumbnails, .loading .product__name {
+    width: 100%;
+  }
+
+  .col:not(:last-of-type) {
+    padding-bottom: 0;
+  }
+
+  .row {
+    flex-wrap: wrap;
+  }
+
+  .product-image-selected {
+    height: calc(100vw - 60px);
+  }
+
+  .loading .product-images-thumbnails, .product-images-thumbnails .product__image {
+    height: calc(33vw - 30px);
+  }
+
+  .product-images-thumbnails .product__image {
+    width: calc(33vw - 30px);
+  }
+
+  .col div.product__image {
+    margin-bottom: 0;
+  }
+
+  .loading .product__sku {
+    width: 75%;
+}
+
+}
